@@ -1,0 +1,6 @@
+Ventas de septiembre
+libro      14
+cuaderno   18
+hola       282
+dhue       2891
+adios      8
