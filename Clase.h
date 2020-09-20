@@ -6,34 +6,54 @@
 #include <list>
 using namespace std;
 
-template <class T>
+
 class Clase {
 private:
-	void swap(std::vector<T>&, int, int);
+	void swap(std::vector<int>&, int, int);
+  void swapText(std::vector<string>&, int, int);
+  void printBusq(std::vector<int>&, std::vector<string>&, int);
 public:
-	void ordenaBurbuja(std::vector<T>&); 
-  int busqBinaria(const std::vector<T>&, int num);
+  Clase();
+	void ordenaBurbuja(std::vector<int>&, std::vector<string>&); 
+  int busqBinaria(const std::vector<int>&, int num);
+  void busqSecuencial(const std::vector<int>&,std::vector<string>&, int, int);
 };
+Clase::Clase(){
+}
+void Clase::printBusq(std::vector<int>&aux, std::vector<string>&nombre, int tam){
+  cout << "los productos que buscas son: "<<'\n';
+  for (int i = 0; i < tam; i++){
+    cout << aux[i];
+    cout << nombre[aux[i]] << '\n';
+  }
 
-template <class T>
-void Clase<T>::swap(std::vector<T> &v, int i, int j) {
-	T aux = v[i];
+}
+
+void Clase::swap(std::vector<int> &v, int i, int j) {
+	int aux = v[i];
 	v[i] = v[j];
 	v[j] = aux;
 }
-template <class T>
-void Clase<T>::ordenaBurbuja(std::vector<T>&numeros){
+
+void Clase::swapText(std::vector<string> &v, int i, int j){
+  string aux = v[i];
+	v[i] = v[j];
+	v[j] = aux;
+}
+
+void Clase::ordenaBurbuja(std::vector<int>&numeros, std::vector<string>&nombre){
   for (int i = numeros.size()-1; i > 0; i--){
     for (int j = 0; j < i; j++){
       if (numeros[j] > numeros[j + 1]){
         swap(numeros, j, j + 1);
+        swapText(nombre, j, j + 1);
       }
     }
   }
   return;
 }
-template <class T>
-int Clase<T>::busqBinaria(const std::vector<T>&vector, int num){
+
+int Clase::busqBinaria(const std::vector<int>&vector, int num){
   int mid;
   int high = vector.size() - 1;
   int low = 0;
@@ -49,6 +69,21 @@ int Clase<T>::busqBinaria(const std::vector<T>&vector, int num){
     }
   }
   return low; 
+}
+
+void Clase::busqSecuencial(const std::vector<int>&numero,std::vector<string>&nombre , int min, int max){
+  int tam = 0;
+  int count = 0;
+  std::vector<int> aux(numero.size());
+  for (int i = 0; i <= numero.size() - 1; i++){
+    //cout << numero[i] << '\n';
+    if (numero[i] >= min && numero[i] <= max){
+      aux[count] = i;
+      count ++;
+      tam ++;
+    }
+  }
+  printBusq(aux, nombre, tam);
 }
 
 
