@@ -1,6 +1,21 @@
-Ventas de septiembre
-libro      14
-cuaderno   18
-hola       282
-dhue       2891
-adios      8
+Ventas de septiembre 
+cuaderno       70
+engrapadora    70
+guillotina     70
+pluma          71
+protaplumas    37
+mousepad      182
+mouse          90
+archivero      90
+folders        29
+hojas          90
+marcatextos    80
+clips         168
+goma           89
+sacapuntas     98
+agendas        76
+calendario     86
+pisapapeles    40
+impresora      18
+grapas         98
+libro           7
