@@ -1,0 +1,19 @@
+Edades de alumnos
+Antonio     19
+Gerardo     19
+Felipe      20
+Andrea      18
+Fernando    18
+Ivanna      19
+Carlos      20
+María       20
+Juan        19
+Carmen      21
+Graciela    18
+Jose        21
+Fernanda    18
+Angel       20
+Roberto     19
+Miguel      18
+Luis        19
+Juana       21
