@@ -4,67 +4,73 @@
 #include <string>
 #include <sstream>
 #include "exception.h"
+#include <iostream>
+using namespace std;
 
-template <class T> class List;
 
-template <class T>
+class List;
+
+//la clase link contiene los datos extraidos del archivo
+//o sea el nombre y la edad
 class Link {
 private:
-	Link(T);
-	Link(T, Link<T>*);
-	Link(const Link<T>&);
-	T	    value;
-  
-	Link<T> *next;
-	friend class List<T>;
+	Link(string, int);
+	Link(string, int, Link*);
+	Link(const Link&);
+	int	    value;
+  string nombre;
+	Link *next;
+	friend class List;
 };
 
-template <class T>
-Link<T>::Link(T val) : value(val), next(0) {}
+//contructores de link
+Link::Link(string nom, int val) : value(val), next(0), nombre(nom) {}
 
-template <class T>
-Link<T>::Link(T val, Link* nxt) : value(val), next(nxt) {}
 
-template <class T>
-Link<T>::Link(const Link<T> &source) : value(source.value), next(source.next) {}
+Link::Link(string nom ,int val, Link* nxt) : value(val), next(nxt), nombre(nom) {}
 
-template <class T>
+
+Link::Link(const Link &source) : value(source.value), next(source.next) {}
+
+//la clase lista es la que liga cada link
 class List {
 public:
 	List();
-	List(const List<T>&) throw (OutOfMemory);
+	List(const List&) throw (OutOfMemory);
 	~List();
-	void add(T) throw (OutOfMemory);
-	void find(T, T);
+	void add(string, int) throw (OutOfMemory);
+	void find(int, int);
 	std::string toString() const;
-	void update(int, T) throw (IndexOutOfBounds);
-	T    remove(int) throw (IndexOutOfBounds);
   void clear();
-  void addFirst(T) throw (OutOfMemory);
-  void printBusqueda(std::vector<T>&);
+  void addFirst(string, int) throw (OutOfMemory);
+  void printBusqueda(std::vector<int>&);
 
 private:
-	Link<T> *head;
+	Link *head;
 	int 	size;
 };
 
-template <class T>
-List<T>::List() : head(0), size(0) {}
-
-template <class T>
-List<T>::~List() {
+//constructores y destructor
+List::List() : head(0), size(0) {}
+List::List(const List &source) throw (OutOfMemory) {
+  head = source.head;
+  size = source.size;
+}
+List::~List() {
   clear();
 }
 
-template <class T>
-void List<T>::add(T val) throw (OutOfMemory) {
-  Link<T> *p, *newLink;
-  newLink = new Link<T>(val);
+
+//función que añade un nuevo link a la lista,
+//de esta manera podemos pasar del archivo a la lista
+void List::add(string nom, int value) throw (OutOfMemory) {
+  Link *p, *newLink;
+  newLink = new Link(nom, value);
 	if (newLink == 0) {
 		throw OutOfMemory();
 	}
   if (head == 0){
-    addFirst(val);
+    addFirst(nom, value);
     return;
   }
   p = head;
@@ -77,15 +83,15 @@ void List<T>::add(T val) throw (OutOfMemory) {
 }
 
 
-template <class T>
-void List<T>::find(T min, T max) {
+//función que ayuda a buscar los valores que caen en el 
+//rango dado
+void List::find(int min, int max) {
   std::vector<int> aux(size);
-  Link<T> *p;
+  Link *p;
   p = head;
   int count = 0;
   int pos = 0;
   while (p->next != 0){
-    std::cout << p->value << '\n';
     if (p->value >= min && p->value <= max ){
       aux[count] = pos;
       count ++;
@@ -93,90 +99,31 @@ void List<T>::find(T min, T max) {
     p = p->next;
     pos++;
   }
+  /*el vector aux contiene las posiciones en las que 
+  se encontró valores dentro del rango*/
   aux.resize(count);
   printBusqueda(aux);
 }
-template <class T>
-void List<T>::printBusqueda(std::vector<T>&aux){
+
+//este método ayuda a mostrar el resultado de la busqueda
+void List::printBusqueda(std::vector<int> &aux){
+  Link *p;
+  cout << "Las personas de la edad buscada son: "<<'\n';
   for (int i = 0; i < aux.size(); i++){
-    std::cout << aux[i] << '\n';
-  }
-}
-/*{
-  cout << "los productos que buscas son: "<<'\n';
-  for (int i = 0; i < tam; i++){
-    cout << aux[i];
-    cout << nombre[aux[i]] << '\n';
-  }
-
-}*/
-
-
-template <class T>
-std::string List<T>::toString() const {
-	std::stringstream aux;
-	Link<T> *p;
-	p = head;
-	aux << "[";
-	while (p != 0) {
-		aux << p->value;
-		if (p->next != 0) {
-			aux << ", ";
-		}
-		p = p->next;
-	}
-	aux << "]";
-	return aux.str();
-}
-
-template <class T>
-List<T>::List(const List<T> &source) throw (OutOfMemory) {
-  head = source.head;
-  size = source.size;
-}
-
-template <class T>
-void List<T>::update(int index, T val) throw (IndexOutOfBounds) {
   int pos = 0;
-  Link<T> *p;
   p = head;
-  while (pos != index){
-    p = p->next;
-    pos++;
+    while (p != 0) {
+			if (p->next != 0 && pos == aux[i]) {
+        cout << p->nombre << '\n';
+			}
+			p = p->next;
+      pos ++;
+		}
   }
-  p->value = val;
 }
-
-template <class T>
-T List<T>::remove(int index) throw (IndexOutOfBounds) {
-  int pos = 0;
-  Link<T> *p;
-  Link<T> *borrar; 
-  p = 0;
-  borrar = head;
-  int val;
-  if (index == 0){
-    p = head;
-    head = p->next;
-    val = p->value;
-    delete p;
-    size--;
-    return val;
-  }
-  while (pos != index){
-    p = borrar;
-    borrar = borrar->next;
-    pos ++;
-  }
-  val = borrar->value; 
-  p->next = borrar->next;
-  delete borrar;
-  size --;
-	return val;
-}
-template <class T>
-void List<T>::clear() {
-	Link<T> *p, *q;
+//clear recorre la lista y borra los valores que contiene cada link
+void List::clear() {
+	Link *p, *q;
 
 	p = head;
 	while (p != 0) {
@@ -187,11 +134,15 @@ void List<T>::clear() {
 	head = 0;
 	size = 0;
 }
-template <class T>
-void List<T>::addFirst(T val) throw (OutOfMemory) {
-	Link<T> *newLink;
 
-	newLink = new Link<T>(val);
+
+/*en caso de que la lista esté vacía, se manda llamar
+addfirst, para evitar que se busque acceder a un 
+espacio no válido en la memoria*/
+void List::addFirst(string nom,int val) throw (OutOfMemory) {
+	Link *newLink;
+
+	newLink = new Link(nom,val);
 	if (newLink == 0) {
 		throw OutOfMemory();
 	}
