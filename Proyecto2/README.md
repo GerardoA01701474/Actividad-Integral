@@ -1,4 +1,6 @@
-Recibe un archivo .txt en el que se encuentra un listado de nombres y edades
+Recibe un archivo .txt en el que se encuentra un listado de nombres y edades...
+Compilar con g++ -Wno-deprecated main.cpp
+Hay un archivo llamado prueba en el que se muestran varios casos de prueba de las siguientes funciones:
 ## Función add: 
 Es de complejidad O(n) debido a que se agrega el nuevo valor al final de la lista, por lo tanto recorre todas las localidades
 Esta función crea un nuevo objeto y lo coloca al final de la lista, dicho objeto contiene un nombre y  una edad 
