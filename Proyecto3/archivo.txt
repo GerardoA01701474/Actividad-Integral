@@ -1,0 +1,21 @@
+Calificaciones grupo 2 estructuras de datos
+Gerardo 91
+Fernanda 73
+José 87
+Angel 90
+Graciela 93
+Manuel 100
+Ignacio 63
+María 100
+Kenia 91
+Gabriel 98
+Miguel 91
+Luis 95
+Javier 91
+Rogelio 69
+Jesus 91
+Rodrigo 80
+Gabriela 86
+Marcos 91
+Pedro 100
+Alfonso 97
