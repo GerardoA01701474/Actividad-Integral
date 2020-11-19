@@ -4,4 +4,12 @@ El programa recibe un archivo de texto con una lista de cada parada de autobús 
 # Al correr el main:
 se toman los datos del archivo de rutas.txt para almacenarlos en una lista de adyacencia y una matriz de adyacencia, luego le pregunta al usuario la parada de autobús en la 
 que está y a la que quiere llegar. Entonces despleja el orden en el que tiene que tomar cada ruta para llegar en los menos autobuses posibles.
-# La función DFS:
+## La función DFS:
+## loadAdjMat:
+recorre cada linea del archivo de texto y luego con ayuda de una función auxiliar (Matrix) incluye cada numero en la matriz de adyacencia, esto lo hace de complejidad O(n)
+## loadAdjList:
+recorre cada linea del archivo de texto y luego con ayuda de una función auxiliar (List) incluye cada numero en la matriz de adyacencia, esto lo hace de complejidad O(n)
+## PrintMatriz:
+imprime la matriz, recorre la matriz con dos for loops, esto lo convierte en O(n^2)
+## PrintList:
+imprime la lista, recorre la lista con dos for loops, esto lo convierte en O(n^2)
