@@ -109,19 +109,28 @@ void List::find(int min, int max) {
 
 //este método ayuda a mostrar el resultado de la busqueda
 void List::printBusqueda(std::vector<int> &aux){
+  std::stringstream auxi;
   Link *p;
-  cout << "Las personas de la edad buscada son: "<<'\n';
+  auxi << "Las personas de la edad buscada son: "<<'\n';
   for (int i = 0; i < aux.size(); i++){
   int pos = 0;
-  p = head;
+  p = head; 
     while (p != 0) {
 			if (p->next != 0 && pos == aux[i]) {
-        cout << p->nombre << '\n';
+        auxi << p->nombre << '\n';
 			}
 			p = p->next;
       pos ++;
 		}
   }
+  ofstream myfilein ("ejemplo.txt");
+  if (myfilein.is_open()){
+    myfilein << auxi.str();
+    myfilein.close();
+  }else{ 
+  cout << "No se puede abrir el archivo";
+  }
+  cout << auxi.str();
 }
 //clear recorre la lista y borra los valores que contiene cada link
 void List::clear() {
