@@ -30,7 +30,7 @@ Se obtendrán los datos del archivo.txt para separar en dos vectores, uno con lo
 98 grapas 
 168 clips 
 182 mousepad 
-
+**************************************************************************************
 - *Función busqSecuencial*.... recibe ambos vectores (nombres de productos y venta de cada producto), un límite minimo y un limite máximo. Devuelve en consola una lista con los productos que se vendieron entre el rango que el usuario ingresó.
 - De la busqueda A.busqSecuencial(numeros, nombres, 50, 2000) se espera esta salida en la consola:
 5cuaderno
