@@ -5,6 +5,7 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
+using namespace std;
 
 template <class T>
 class Heap {
@@ -31,6 +32,7 @@ public:
   void push(unsigned int);
   int repetido(); 
   int contar(int);
+  void leer();
   
 };
 template <class T>
@@ -80,12 +82,21 @@ void Heap<T>::swap(unsigned int i, unsigned int j) {
 template <class T>
 std::string Heap<T>::toString() const {
 	std::stringstream aux;
+  aux << "arbol heap: "<< '\n';
 	aux << "[";	for (unsigned int i = 0; i < count; i++) {
 		if (i != 0) {
 			aux << " ";
 		} aux << data[i];
 	} aux << "]";
-	return aux.str();
+	//return aux.str();
+  ofstream myfilein ("ejemplo.txt");
+  if (myfilein.is_open()){
+    myfilein << aux.str();
+    myfilein.close();
+  }else{ 
+  cout << "No se puede abrir el archivo";
+  }
+  return aux.str();
 }
 
 template<class T>
@@ -166,5 +177,25 @@ int Heap<T>::contar(int num){
   return x;
 }
 
+template<class T>
+void Heap<T>::leer(){
+  string line;
+  string nombre;
+  int venta;
+  string archivo = "archivo.txt";//nombre del archivo
+  //-----------se abre el archivo---------------//
+  ifstream leerArchivo (archivo);
+  if (leerArchivo.is_open()){
+  int count = 1;
+  while (getline (leerArchivo, line) ){
+    leerArchivo >> nombre >> venta;
+    push(venta);//vamos registrando en el arbol A
+    count++;
+  }
+  leerArchivo.close();
+  }else{
+cout << "No se pudo abrir el archivo" << endl;
+  }
+}
 
 #endif 
