@@ -34,7 +34,15 @@ Clase A;
 A.ordenaBurbuja(numeros, nombres);
 
 //---------------Se busca dentro del vector ordenado, recibe un rango---//
+
 A.busqSecuencial(numeros, nombres, 50, 2000);
+int max, min;
+cout << "Limite inferior: ";
+cin >> min;
+cout << "limite superior: ";
+cin >> max;
+A.busqSecuencial(numeros, nombres, min, max);
+
 
 //------------El vector ordenado se escribe en un archivo nuevo
 ofstream myfilein ("ejemplo.txt");
