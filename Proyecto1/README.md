@@ -1,4 +1,5 @@
 # Actividad-Integral
+# Registro de ventas de 
 ## BubbleSort:
 es de complejidad O(n^2), al no necesitar trabajar con muchos datos y no necesariemente rápido, es una buena opción como algoritmo de ordenamiento
 ## Busqueda secuencial:
