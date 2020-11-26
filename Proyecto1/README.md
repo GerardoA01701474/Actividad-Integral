@@ -13,5 +13,5 @@ Se obtendrán los datos del archivo.txt para separar en dos vectores, uno con lo
 
 ## análisis de complejidad
 - *BubbleSort*..............es de complejidad O(n^2) ya que usé un for anidado, que recorre el vector de ventas hacia adelante mientras va comparando con cada valor del vector hacia atrás. Al no necesitar trabajar con muchos datos y no necesariemente de manera rápida, este resultó una buena opción como algoritmo de ordenamiento
-- *Busqueda secuencial*.....es de complejidad linela O(n) ya que tiene que recorrer todo el vector
+- *Busqueda secuencial*.....es de complejidad linela O(n) ya que tiene que recorrer todo el vector con ayuda de un ciclo for que va desde cero hasta la última localidad para después desplegar el resultado en consola
 
