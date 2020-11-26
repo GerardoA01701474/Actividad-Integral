@@ -44,6 +44,7 @@ public:
   void clear();
   void addFirst(string, int) throw (OutOfMemory);
   void printBusqueda(std::vector<int>&);
+  void leer();
 
 private:
 	Link *head;
@@ -55,6 +56,7 @@ List::List() : head(0), size(0) {}
 List::List(const List &source) throw (OutOfMemory) {
   head = source.head;
   size = source.size;
+  
 }
 List::~List() {
   clear();
@@ -149,6 +151,27 @@ void List::addFirst(string nom,int val) throw (OutOfMemory) {
 	newLink->next = head;
 	head = newLink;
 	size++;
+}
+
+void List::leer(){
+string archivo = "archivo.txt";
+string line;
+string nombre;
+int venta;
+  //-----------se abre el archivo---------------//
+ifstream leerArchivo (archivo);
+if (leerArchivo.is_open()){
+  int count = 1;
+  while (getline (leerArchivo, line) ){
+    leerArchivo >> nombre >> venta;
+    add(nombre,venta);//vamos registrando en la lista A
+    count++;
+  }
+  leerArchivo.close();
+}else{
+cout << "No se pudo abrir el archivo" << endl;
+}
+
 }
 
 
