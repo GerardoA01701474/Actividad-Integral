@@ -4,8 +4,8 @@ Este programa permite mostrar las ventas de ciertos artículos en una papelería
 ## Especificaciones Técnicas
 En este repositorio se incluyen los archivos:
 - main.cpp 
--clase.h 
--archivo.txt
+- clase.h 
+- archivo.txt
 Se obtendrán los datos del archivo.txt para separar en dos vectores, uno con los nombres de los productos y otro con la venta que se alcanzó por cada producto. El resultado del algoritmo de ordenamiento se imprimirá en un nuevo archivo llamado "ejemplo.txt"
 ## Casos de prueba
 *Funcion ordenaBurbuja*...... recibe ambos vectores obtenidos del archivo.txt, el de nombre y el de ventas. Toma estos vectores y los ordena con un algoritmo Bubble, para después desplegar el resultado de dicho ordenamiento en el archivo "ejemplo.txt" 
