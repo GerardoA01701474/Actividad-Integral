@@ -89,13 +89,15 @@ void List::add(string nom, int value) throw (OutOfMemory) {
 //rango dado
 void List::find(int min, int max) {
   std::vector<int> aux(size);
+  //cout << "SIZE: "<< size;
   Link *p;
   p = head;
   int count = 0;
   int pos = 0;
-  while (p->next != 0){
+  while (p != 0){
     if (p->value >= min && p->value <= max ){
       aux[count] = pos;
+      //cout << pos;
       count ++;
     }
     p = p->next;
@@ -112,11 +114,14 @@ void List::printBusqueda(std::vector<int> &aux){
   std::stringstream auxi;
   Link *p;
   auxi << "Las personas de la edad buscada son: "<<'\n';
+  //cout << "..."<< aux.size();
   for (int i = 0; i < aux.size(); i++){
-  int pos = 0;
-  p = head; 
+    //cout<<"heeeeey: " << aux[i];
+    int pos = 0;
+    p = head; 
     while (p != 0) {
-			if (p->next != 0 && pos == aux[i]) {
+			if ( pos == aux[i]) {
+        //cout << p->nombre;
         auxi << p->nombre << '\n';
 			}
 			p = p->next;
@@ -170,10 +175,12 @@ int venta;
   //-----------se abre el archivo---------------//
 ifstream leerArchivo (archivo);
 if (leerArchivo.is_open()){
-  int count = 1;
+  int count = 0;
   while (getline (leerArchivo, line) ){
     leerArchivo >> nombre >> venta;
+    //cout << nombre;
     add(nombre,venta);//vamos registrando en la lista A
+    //cout << count;
     count++;
   }
   leerArchivo.close();
@@ -181,6 +188,22 @@ if (leerArchivo.is_open()){
 cout << "No se pudo abrir el archivo" << endl;
 }
 
+}
+
+std::string List::toString() const {
+	std::stringstream aux;
+	Link *p;
+	p = head;
+	aux << "[";
+	while (p != 0) {
+		aux << p->nombre;
+		if (p->next != 0) {
+			aux << ", ";
+		}
+		p = p->next;
+	}
+	aux << "]";
+	return aux.str();
 }
 
 
