@@ -4,6 +4,14 @@ El programa recibe un archivo de texto con una lista de cada parada de autobús 
 # Al correr el main:
 se toman los datos del archivo de rutas.txt para almacenarlos en una lista de adyacencia y una matriz de adyacencia, luego le pregunta al usuario la parada de autobús en la 
 que está y a la que quiere llegar. Entonces la función DFS, con ayuda de printPath, despleja el orden en el que tiene que tomar cada ruta para llegar en los menos autobuses posibles.
+## casos de prueba:
+En prueba.cpp se implementan casos de prueba y estas son las resupestas esperadas:
+- mejor ruta para 0, 3: 0 3
+- mejor ruta para 2, 4: 2 0 3 4
+- mejor ruta para 1, 3: 1 4 3
+- mejor ruta para 0, 4: 0 3 4
+- lista de adyacencia: 
+vertex 0 : 1 2 3 vertex 1 : 0 2 3 4 vertex 2 : 0 1 2 2 3 4 vertex 3 : 0 1 2 4 vertex 4 : 1 2 3 vertex 5 : vertex 6 : 
 ## La función DFS:
 Usada para recorrer todos los nodos del grafo. Es de complejidad O(vertice * arco) ya que recorre todos los arcos de cada uno de los vertices 
 ## printPath:
