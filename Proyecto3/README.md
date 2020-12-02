@@ -11,7 +11,7 @@ este repositorio incluye los archivos:
 - pruebas.cpp
 se genera un nuevo archivo ejemplo.txt con el resultado de la busqueda ingresada
 ## casos prueba: 
-En este caso las funciones implementadas no reciben algún parámetro, por lo que en un solo main ejemplifiqué una vez cada función y estos son los resultados que se esperan:
+En este caso las funciones las ejemplifiqué en el archivo prueba.cpp y estos son los resultados que se esperan:
 - *A.toString()*....en un nuevo archivo llamado "ejemplo.txt" se escribe lo siguiente:
 **arbol heap: 
 [63 80 69 86 91 91 73 90 91 97 93 100 95 87 91 100 91 91 100 98 97].**
