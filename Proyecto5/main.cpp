@@ -4,7 +4,7 @@
 using namespace std; 
 int main() { 
   int op;
-  DisjSet A(9); 
+  DisjSet A(30); 
   A.leer();
   A.Union("José", "Jorge"); 
   A.Union("Rodrigo", "Fernanda"); 
